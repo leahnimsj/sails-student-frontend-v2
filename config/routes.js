@@ -46,9 +46,57 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+// for Student routes
   'POST /create_student': 'StudentController.create',
   'GET /manage_students': 'StudentController.read',
   'POST /update_student': 'StudentController.update',
-  'POST /delete_student': 'StudentController.delete'
+  'POST /delete_student': 'StudentController.delete',
 
+  // for Grade routes
+  'GET /manage_grades':   'GradeController.read',
+  'POST /create_grade':   'GradeController.create',
+  'POST /delete_grade':   'GradeController.delete',
+  'POST /update_grade':   'GradeController.update',
+
+  // for Assignment routes
+  'GET /manage_assignments':   'AssignmentController.read',
+  'POST /create_assignment':   'AssignmentController.create',
+  'POST /delete_assignment':   'AssignmentController.delete',
+  'POST /update_assignment':   'AssignmentController.update',
+
+  // for Instructor routes
+
+  'GET /manage_instructors':   'InstructorController.read',
+  'POST /create_instructor':   'InstructorController.create',
+  'POST /delete_instructor':   'InstructorController.delete',
+  'POST /update_instructor':   'InstructorController.update',
+
+  // for Major routes
+
+  'GET /manage_majors':        'MajorController.read',
+  'POST /create_major':        'MajorController.create',
+  'POST /delete_major':        'MajorController.delete',
+  'POST /update_major':        'MajorController.update',
+
+  // for Class routes
+
+  'GET /manage_courses':        'CourseController.read',
+  'POST /create_course':        'CourseController.create',
+  'POST /delete_course':        'CourseController.delete',
+  'POST /update_course':        'CourseController.update',
+
+
+  // for Student_class routes
+
+  'GET /manage_studentclasses':        'StudentclassController.read',
+  'POST /create_studentclass':         'StudentclassController.create',
+  'POST /delete_studentclass':         'StudentclassController.delete',
+  'POST /update_studentclass':         'StudentclassController.update',
+
+  // for major_class routes
+
+  'GET /manage_majorclasses':        'MajorclassController.read',
+  'POST /create_majorclass':         'MajorclassController.create',
+  'POST /delete_majorclass':         'MajorclassController.delete',
+  'POST /update_majorclass':         'MajorclassController.update'
 };

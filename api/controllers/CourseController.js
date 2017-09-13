@@ -7,8 +7,8 @@
 
 var Client = require('node-rest-client').Client;
 var client = new Client();
-var endpoint = "http://localhost:1337/student";
-var view = "manage_students";
+var endpoint = "http://localhost:1337/class";
+var view = "manage_courses";
 
 function clean_request_body(request_body){
   return JSON.parse(JSON.stringify(request_body).replace(/\"\"/g, null))
@@ -47,9 +47,9 @@ module.exports = {
   read: function (req, res) {
 
     client.get(endpoint, function (data, response) {
-        return res.view(view, {students: data});
+        return res.view(view, {courses: data});
     }).on('error', function (err) {
-        return res.view(view, {error: { message: "There was an error getting the students"}});
+        return res.view(view, {error: { message: "There was an error getting the classes"}});
     });
 
   },
@@ -60,15 +60,15 @@ module.exports = {
    */
   update: function (req, res) {
 
-    let gradeId = req.body.student_id;
-    delete req.body.student_id;
+    let classId = req.body.class_id;
+    delete req.body.class_id;
 
     var args = {
         data: clean_request_body(req.body),
         headers: { "Content-Type": "application/json" }
     };
 
-    client.put(endpoint + "/" + gradeId, args, function (data, response) {
+    client.put(endpoint + "/" + classId, args, function (data, response) {
 
       if(response.statusCode != "200"){
           req.addFlash("error", data.message);
@@ -86,7 +86,7 @@ module.exports = {
    */
   delete: function (req, res) {
 
-    client.delete(endpoint + "/" + req.body.student_id, function (data, response) {
+    client.delete(endpoint + "/" + req.body.class_id, function (data, response) {
 
       if(response.statusCode != "200"){
           req.addFlash("error", data.message);
